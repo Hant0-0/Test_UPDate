@@ -12,14 +12,14 @@ class ProductListAPIView(generics.ListAPIView, generics.RetrieveAPIView):
 
 
 class ProductDetailAPIView(APIView):
-    def get(self, request, title):
-        product = get_object_or_404(Product, title=title)
+    def get(self, request, product_name):
+        product = get_object_or_404(Product, name=product_name)
         serializer = ProductSerializer(product).data
         return Response(serializer, status=status.HTTP_200_OK)
 
 
 class ProductDetailFieldDetailAPIView(APIView):
-    def get(self, request, title, field):
-        product = get_object_or_404(Product, title=title)
+    def get(self, request, product_name, product_field):
+        product = get_object_or_404(Product, name=product_name)
         serializer = ProductSerializer(product).data
-        return Response({field: serializer[field]}, status=status.HTTP_200_OK)
+        return Response({product_field: serializer[product_field]}, status=status.HTTP_200_OK)

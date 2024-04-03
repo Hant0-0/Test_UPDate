@@ -5,7 +5,7 @@ from api_menu.views import ProductListAPIView, ProductDetailAPIView, ProductDeta
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("product/", ProductListAPIView.as_view()),
-    path("product/<str:title>/", ProductDetailAPIView.as_view()),
-    path("product/<str:title>/<str:field>/", ProductDetailFieldDetailAPIView.as_view()),
+    path("all_products/", ProductListAPIView.as_view()),
+    path("products/<str:product_name>/", ProductDetailAPIView.as_view()),
+    path("products/<str:product_name>/<str:product_field>/", ProductDetailFieldDetailAPIView.as_view()),
 ]

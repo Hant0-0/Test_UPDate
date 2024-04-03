@@ -32,7 +32,6 @@ class Command(BaseCommand):
             sugar = next_data[1].text.split('\n')[2]
             salt = next_data[2].text.split('\n')[2]
             portion = next_data[3].text.split('\n')[2]
-            print(title_menu)
             data = {
                 "name": title_menu,
                 "description": desc_dish,
@@ -45,11 +44,11 @@ class Command(BaseCommand):
                 "salt": salt,
                 "portion": portion,
             }
-            get_product = Product.objects.filter(title=title_menu).exists()
+            get_product = Product.objects.filter(name=title_menu).exists()
             data_list.append(data)
             if get_product:
-                Product.objects.filter(title=title_menu).update(
-                    title=title_menu,
+                Product.objects.filter(name=title_menu).update(
+                    name=title_menu,
                     description= desc_dish,
                     calories = calories,
                     fats = fats,
@@ -62,7 +61,7 @@ class Command(BaseCommand):
                 )
             else:
                 Product.objects.create(
-                    title=title_menu,
+                    name=title_menu,
                     description=desc_dish,
                     calories=calories,
                     fats=fats,

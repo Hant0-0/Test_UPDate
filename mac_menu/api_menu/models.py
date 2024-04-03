@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=120)
+    name = models.CharField(max_length=120)
     description = models.TextField()
     calories = models.CharField(max_length=120)
     fats = models.CharField(max_length=120)
